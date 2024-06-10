@@ -1,7 +1,17 @@
 <?php
     require 'header.php';
-    require 'oeuvres.php';
+    include 'bdd.php';
 ?>
+
+<?php
+$mysqlClient = connexion();
+
+$sqlQuery = 'SELECT * FROM oeuvres';
+$recipesStatement = $mysqlClient->prepare($sqlQuery);
+$recipesStatement->execute();
+$oeuvres = $recipesStatement->fetchAll();
+?>
+
 <div id="liste-oeuvres">
     <?php foreach($oeuvres as $oeuvre): ?>
         <article class="oeuvre">
