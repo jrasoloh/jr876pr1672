@@ -4,12 +4,7 @@
 ?>
 
 <?php
-$mysqlClient = connexion();
-
-$sqlQuery = 'SELECT * FROM oeuvres';
-$recipesStatement = $mysqlClient->prepare($sqlQuery);
-$recipesStatement->execute();
-$oeuvres = $recipesStatement->fetchAll();
+$oeuvres = getOeuvres();
 ?>
 
 <div id="liste-oeuvres">
